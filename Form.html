@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Feedback</title>
+	<style>
+		label {
+			float: left;
+			width: 150px;
+		}
+
+		#container {
+			width: 700px;
+			margin: auto;
+			background-color: beige;
+			padding-bottom: 20px;
+		}
+
+		main {
+			padding: 50px;
+		}
+
+		p {
+			clear: both;
+			margin-bottom: 15px;
+		}
+
+		.error {
+			color: red;
+			font-size: 0.8em;
+			margin-left: 160px;
+			display: block;
+		}
+
+		/* Add a red border for invalid fields */
+		.invalid {
+			border: 2px solid red;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-top: 20px;
+		}
+
+		table,
+		th,
+		td {
+			border: 1px solid black;
+		}
+
+		th,
+		td {
+			padding: 5px;
+			text-align: left;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="container">
+		<main>
+			<h2>Feedback</h2>
+			<h3>Love something? Hate something? Let us know!</h3>
+			<p>Note: Fields marked with an asterisk (*) are mandatory</p>
+			<form id="feedbackForm" method="post" novalidate>
+				<!-- Title (Radio Buttons) -->
+				<p>
+					<span>Title*:</span>
+					<label>
+						<input type="radio" name="title" value="Miss" required /> Miss
+					</label>
+					<label>
+						<input type="radio" name="title" value="Mr" required /> Mr.
+					</label>
+					<label>
+						<input type="radio" name="title" value="Mrs" required /> Mrs.
+					</label>
+				</p>
+				<span id="titleError" class="error"></span>
+
+				<!-- First Name -->
+				<p>
+					<label for="firstName">First Name*:</label>
+					<input type="text" name="firstName" id="firstName" placeholder="First Name" />
+				</p>
+				<span id="firstNameError" class="error"></span>
+
+				<!-- Last Name -->
+				<p>
+					<label for="lastName">Last Name*:</label>
+					<input type="text" name="lastName" id="lastName" placeholder="Last Name" />
+				</p>
+				<span id="lastNameError" class="error"></span>
+
+				<!-- Email (restricted to @northeastern.edu) -->
+				<p>
+					<label for="emailId">Email Id*:</label>
+					<input type="email" name="emailId" id="emailId" placeholder="yourname@northeastern.edu" />
+				</p>
+				<span id="emailError" class="error"></span>
+
+				<!-- Phone Number (with input masking) -->
+				<p>
+					<label for="phoneNumber">Phone Number*:</label>
+					<input type="tel" name="phoneNumber" id="phoneNumber" placeholder="(XXX) XXX-XXXX" />
+				</p>
+				<span id="phoneError" class="error"></span>
+
+				<!-- Zip Code -->
+				<p>
+					<label for="zipcode">ZipCode*:</label>
+					<input type="text" name="zipcode" id="zipcode" placeholder="5 digits" />
+				</p>
+				<span id="zipError" class="error"></span>
+
+				<!-- Street Address 2 (Optional with live character counter) -->
+				<p>
+					<label for="address2">Street Address 2:</label>
+					<input type="text" name="address2" id="address2" placeholder="Street Address 2" maxlength="20" />
+				</p>
+				<span id="address2Counter" style="margin-left: 160px; font-size: 0.8em;"></span>
+
+				<!-- How did you hear (Checkboxes) -->
+				<p>
+					<span>How did you hear*:</span>
+					<label>
+						<input type="checkbox" name="source" value="Facebook" /> Facebook
+					</label>
+					<label>
+						<input type="checkbox" name="source" value="Google" /> Google
+					</label>
+					<label>
+						<input type="checkbox" name="source" value="Yelp" /> Yelp
+					</label>
+				</p>
+				<span id="sourceError" class="error"></span>
+
+				<!-- Comments -->
+				<p>
+					<label for="comments">Comments*:</label>
+					<textarea name="comments" id="comments" placeholder="Your comments" rows="5" cols="25"></textarea>
+				</p>
+				<span id="commentsError" class="error"></span>
+
+				<!-- Single Select List Box (with 5 options) -->
+				<p>
+					<label for="listSelect">Select an option*:</label>
+					<select id="listSelect" name="listSelect">
+						<option value="">--Select--</option>
+						<option value="Option 1">Option 1</option>
+						<option value="Option 2">Option 2</option>
+						<option value="Option 3">Option 3</option>
+						<option value="Option 4">Option 4</option>
+						<option value="Option 5">Option 5</option>
+					</select>
+				</p>
+				<span id="listError" class="error"></span>
+
+				<!-- Container for the dynamic checkbox and its associated dynamic text field -->
+				<div id="dynamicCheckboxContainer"></div>
+
+				<!-- Submit and Reset buttons -->
+				<p>
+					<input type="submit" id="submitButton" value="Submit" disabled>
+					<input type="reset" id="resetButton" value="Reset">
+				</p>
+			</form>
+
+			<!-- Results Table Container -->
+			<div id="resultsTableContainer"></div>
+		</main>
+	</div>
+
+	<!-- 引入外部的 JavaScript 文件 -->
+	<script src="script.js"></script>
+</body>
+
+</html>
